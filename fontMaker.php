@@ -10,19 +10,26 @@ if (0 < $_FILES['file']['error']) {
 move_uploaded_file($_FILES['file']['tmp_name'], './img/' . $_FILES['file']['name']);
 
 
-/*
 
-    $name = file_get_contents('../../img/nb.txt');
-    $letter = 'a';
+$image = imagecreatefrompng('./img/' . $_FILES['file']['name']);
+$height = imagesy($image);
+$width = imagesx($image);
 
-    for($i = 0; $i < $name; $i++){
-        $letter++;
+$list = [];
+for ($i = 0; $i < $width; $i++) {
+    for ($y = 0; $y < $height; $y++) {
+        $colorIndex = imagecolorat($image, $i, $y);
+        $color = imagecolorsforindex($image, $colorIndex);
+        $list[$i][$y] = $color;
     }
+}
+imagedestroy($image);
 
-    file_put_contents('../../img/nb.txt', $name + 1);
-    $arr = explode('.', $_FILES['file']['name']);
-    $name = $letter . "." . end($arr);
-    move_uploaded_file($_FILES['file']['tmp_name'], '../../img/' . $name);
-    echo '../img/' . $name;
 
-    */
+
+
+
+
+
+
+print_r($list);

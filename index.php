@@ -17,8 +17,14 @@ session_start()
 </head>
 
 <body>
-    <input type="file" accept=".png" id='inputFile'>
-    <button id='Send'>Send</button>
+    <div id='workDiv'>
+        <div id="result"></div>
+        <input type="text" id='inputText' class='input'>
+        <div id='inputFontDiv'>
+            <input type="file" accept=".png" id='inputFile' class='input'>
+            <button id='Send' class='input'>Send</button>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src='script.js'></script>
