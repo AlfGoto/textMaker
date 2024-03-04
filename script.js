@@ -40,7 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     text: inputText.value.toLowerCase()
                 }
             }).done((e) => {
-                console.log(e)
+                let imgContainer = document.getElementById('result')
+                let img = document.createElement('img')
+                imgContainer.innerHTML = ''
+                imgContainer.appendChild(img)
+                img.src = 'data:image/jpeg;base64,' + JSON.parse(e);
             })
         }
     })

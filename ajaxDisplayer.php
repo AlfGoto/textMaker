@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 if (!file_exists('./img/z.png')) {
     echo 'font not defined';
@@ -37,7 +38,7 @@ imagepng($result, 'img/result.png');
 
 
 
+$imageData = base64_encode(file_get_contents('img/result.png'));
 
 
-
-echo json_encode($totalWidth);
+echo json_encode($imageData);

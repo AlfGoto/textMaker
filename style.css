@@ -38,7 +38,7 @@ body {
             border-radius: 1svw;
         }
         #inputFontDiv {
-            
+
             #Send {
                 height: 5svw;
                 width: 10svw;
@@ -46,7 +46,7 @@ body {
                 background-color: var(--accent1light);
             }
         }
-        #inputTextDiv{
+        #inputTextDiv {
             #display {
                 height: 5svw;
                 width: 15svw;
@@ -60,6 +60,16 @@ body {
             height: 50%;
             margin: 10%;
             background-color: var(--accent2light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 80%;
+                max-height: 80%;
+                image-rendering: crisp-edges;
+                image-rendering: pixelated;
+            }
         }
     }
 }
