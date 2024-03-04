@@ -102,3 +102,4 @@ foreach ($alphabetArr as $value) {
     $letter++;
 }
 
+unlink('./img/' . $_FILES['file']['name']);
