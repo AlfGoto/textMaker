@@ -46,6 +46,14 @@ body {
                 background-color: var(--accent1light);
             }
         }
+        #inputTextDiv{
+            #display {
+                height: 5svw;
+                width: 15svw;
+                font-size: 3svw;
+                background-color: var(--accent1light);
+            }
+        }
 
         #result {
             width: 80%;

@@ -1,6 +1,5 @@
 <?php
 
-session_start()
 
 
 ?>
@@ -19,7 +18,10 @@ session_start()
 <body>
     <div id='workDiv'>
         <div id="result"></div>
-        <input type="text" id='inputText' class='input'>
+        <div id="inputTextDiv">
+            <input type="text" id='inputText' class='input' placeholder='texte'>
+            <button id='display' class='input'>Display</button>
+        </div>
         <div id='inputFontDiv'>
             <input type="file" accept=".png" id='inputFile' class='input'>
             <button id='Send' class='input'>Send</button>
