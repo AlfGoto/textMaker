@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sendButton.addEventListener('click', () => {
 
-        
+
         var file_data = $(inputFile).prop('files')[0]
         var form_data = new FormData()
         form_data.append('file', file_data)
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             processData: false,
             contentType: false
         }).done((e)=>{
-            console.log(e)
+            console.log(JSON.parse(e))
         })
     })
 })
