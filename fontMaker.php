@@ -36,7 +36,7 @@ foreach ($list as $value) {
             $temp .= 't$';
         } elseif ($i['red'] == 255 && $i['blue'] == 255 && $i['green'] == 255 && $i['alpha'] == 127) {
             $temp .= 't$';
-        } elseif($i['alpha'] == 127){
+        } elseif ($i['alpha'] == 127) {
             $temp .= 't$';
         } else {
             $temp .= "r" . $i['red'] . "g" . $i['green'] . 'b' . $i['blue'] . 'a' . $i['alpha'] . "$";
@@ -77,6 +77,9 @@ foreach ($alphabetArr as $value) {
     $lettery = count($value[0]);
 
     $gd = imagecreatetruecolor($letterx, $lettery);
+    $red = imagecolorallocate($gd, 255, 0, 0);
+    $black = imagecolorallocate($gd, 0, 0, 0);
+    imagecolortransparent($gd, $black);
 
     $x = -1;
     foreach ($value as $i) {
