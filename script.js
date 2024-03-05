@@ -1,12 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let sendButton = document.getElementById('Send')
     let inputFile = document.getElementById('inputFile')
-    console.log('Script connected')
 
-    sendButton.addEventListener('click', () => {
-
-        var file_data = $(inputFile).prop('files')[0]
-        var form_data = new FormData()
+    inputFile.addEventListener('change', () => {
+        var file_data = $(inputFile).prop('files')[0], form_data = new FormData()
         form_data.append('file', file_data)
 
         if (inputFile.value.length == 0) { return }
@@ -20,26 +16,28 @@ document.addEventListener('DOMContentLoaded', () => {
             data: form_data,
             processData: false,
             contentType: false
-        }).done((e) => {
-            console.log(JSON.parse(e))
         })
     })
 
+    let inputText = document.getElementById('inputText'), inputGap = document.getElementById('inputGap'), inputSpace = document.getElementById('inputSpace')
+    let baseValueInputText = inputText.value, baseValueInputGap = inputGap.value, baseValueInputSpace = inputSpace.value
 
+    setInterval(() => {
+        if ((baseValueInputText != inputText.value ||  baseValueInputGap != inputGap.value || baseValueInputSpace != inputSpace.value) && inputText.value.length > 0) {
+            baseValueInputText = inputText.value, baseValueInputGap = inputGap.value, baseValueInputSpace = inputSpace.value
 
-    let display = document.getElementById('display')
-    let inputText = document.getElementById('inputText')
-
-    display.addEventListener('click', () => {
-        if (inputText.value.length > 0) {
+            if (inputGap.value == 0) { var gap = -1 } else { var gap = inputGap.value }
 
             $.ajax({
                 method: 'POST',
                 url: 'ajaxDisplayer.php',
                 data: {
-                    text: inputText.value.toLowerCase()
+                    text: inputText.value.toLowerCase(),
+                    gap: gap,
+                    space: inputSpace.value
                 }
             }).done((e) => {
+                if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
                 let imgContainer = document.getElementById('result')
                 let img = document.createElement('img')
                 imgContainer.innerHTML = ''
@@ -47,5 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.src = 'data:image/jpeg;base64,' + JSON.parse(e);
             })
         }
-    })
+    }, 2000)
+
+
 })

@@ -18,13 +18,17 @@ session_start();
 <body>
     <div id='workDiv'>
         <div id="result"></div>
-        <div id="inputTextDiv">
-            <input type="text" id='inputText' class='input' placeholder='texte'>
-            <button id='display' class='input'>Display</button>
-        </div>
-        <div id='inputFontDiv'>
-            <input type="file" accept=".png" id='inputFile' class='input'>
-            <button id='Send' class='input'>Send</button>
+        <input type="text" id='inputText' class='input' placeholder='texte'>
+        <input type="file" accept=".png" id='inputFile' class='input'>
+        <div id="gapSpaceDiv">
+            <div>
+                <label for="inputSpace">Space</label>
+                <input type="number" min='0' max='10' value='3' id='inputSpace' name='inputSpace'>
+            </div>
+            <div>
+                <label for="inputGap">Gap</label>
+                <input type="number" min='0' max='10' value='0' id='inputGap' name='inputGap'>
+            </div>
         </div>
     </div>
 

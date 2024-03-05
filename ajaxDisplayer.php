@@ -2,43 +2,55 @@
 
 session_start();
 
-if (!file_exists('./img/z.png')) {
-    echo 'font not defined';
+if (!isset($_SESSION['a'])) {
+    echo json_encode('font not defined');
     exit();
 }
 
+$space = $_POST['space'];
+$gap = $_POST['gap'];
 
 
 $txtARR = str_split($_POST['text']);
 $lettersARR = [];
-$height = file_get_contents('img/#height.txt');
 $totalWidth = 0;
 
+$tempGap = 0;
 foreach ($txtARR as $value) {
-    // $temp = [];
-    // $temp['width'] = getimagesize('img/' . $value . '.png')[0];
-    // $temp['height'] = $height;
-    // $lettersARR[$value] = $temp;
-    $totalWidth += getimagesize('img/' . $value . '.png')[0];
+    if ($value == ' ') {
+        $tempGap = $space;
+    } else {
+        file_put_contents('./tmp/image.png', base64_decode($_SESSION[$value]));
+        $totalWidth += getimagesize('./tmp/image.png')[0] + $gap + $tempGap;
+        $tempGap = 0;
+    }
 }
 
-$result = imagecreatetruecolor($totalWidth, $height);
-$red = imagecolorallocate($result, 255, 0, 0);
+$currentX = 0;
+if($gap == -1){
+    $currentX++;
+    $totalWidth++;
+}
+$result = imagecreatetruecolor($totalWidth, $_SESSION['height']);
 $black = imagecolorallocate($result, 0, 0, 0);
 imagecolortransparent($result, $black);
 
-$currentX = 0;
-
 foreach ($txtARR as $value) {
-    $tmp = imagecreatefrompng('img/' . $value . '.png');
-    imagecopy($result, $tmp, $currentX, 0, 0, 0, getimagesize('img/' . $value . '.png')[0], $height);
-    $currentX += getimagesize('img/' . $value . '.png')[0];
+    if ($value == ' ') {
+        $tempGap = $space;
+    } else {
+        file_put_contents('./tmp/image.png', base64_decode($_SESSION[$value]));
+        $tmp = imagecreatefrompng('./tmp/image.png');
+        imagecopy($result, $tmp, $currentX + $gap + $tempGap, 0, 0, 0, getimagesize('./tmp/image.png')[0], $_SESSION['height']);
+        $currentX += getimagesize('./tmp/image.png')[0] + $gap + $tempGap;
+        $tempGap = 0;
+    }
 }
-imagepng($result, 'img/result.png');
-
-
-
-$imageData = base64_encode(file_get_contents('img/result.png'));
+imagepng($result, './tmp/result.png');
+$imageData = base64_encode(file_get_contents('./tmp/result.png'));
 
 
 echo json_encode($imageData);
+
+unlink('./tmp/result.png');
+unlink('./tmp/image.png');

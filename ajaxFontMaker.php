@@ -7,14 +7,14 @@ if (0 < $_FILES['file']['error']) {
     exit;
 }
 
-move_uploaded_file($_FILES['file']['tmp_name'], './img/' . $_FILES['file']['name']);
+move_uploaded_file($_FILES['file']['tmp_name'], './tmp/' . $_FILES['file']['name']);
 
 
-$image = imagecreatefrompng('./img/' . $_FILES['file']['name']);
-// $image = imagecreatefrompng('./img/wywy.png');
+$image = imagecreatefrompng('./tmp/' . $_FILES['file']['name']);
+// $image = imagecreatefrompng('./tmp/wywy.png');
 $height = imagesy($image);
+$_SESSION['height'] = $height;
 $width = imagesx($image);
-file_put_contents('img/#height.txt', $height);
 
 $list = [];
 for ($i = 0; $i < $width; $i++) {
@@ -70,7 +70,7 @@ foreach ($alphabetStringArr as &$value) {
     }
     array_push($alphabetArr, $temp);
 }
-echo json_encode($alphabetArr);
+// echo json_encode($alphabetArr);
 
 $letter = 'a';
 foreach ($alphabetArr as $value) {
@@ -100,8 +100,11 @@ foreach ($alphabetArr as $value) {
             imagesetpixel($gd, $x, $y, $color);
         }
     }
-    imagepng($gd, "img/$letter.png");
+    imagepng($gd, "tmp/$letter.png");
+    $imagedata = file_get_contents("tmp/$letter.png");
+    $_SESSION[$letter] = base64_encode($imagedata);
+    unlink("tmp/$letter.png");
     $letter++;
 }
 
-unlink('./img/' . $_FILES['file']['name']);
+unlink('./tmp/' . $_FILES['file']['name']);
