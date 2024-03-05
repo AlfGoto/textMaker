@@ -39,10 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }).done((e) => {
                 if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
                 let imgContainer = document.getElementById('result')
+                imgContainer.classList.add('img')
                 let img = document.createElement('img')
                 imgContainer.innerHTML = ''
                 imgContainer.appendChild(img)
-                img.src = 'data:image/jpeg;base64,' + JSON.parse(e);
+                img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
+                var a = document.createElement("a")
+                a.href = "data:image/png;base64," + JSON.parse(e)
+                a.download = inputText.value.replace(' ', '_') + ".png";
+                img.addEventListener('click', ()=>{
+                    a.click();
+                })
             })
         }
     }, 2000)

@@ -10,24 +10,23 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TextMaker</title>
+    <title>Yassou title maker</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
     <div id='workDiv'>
         <div id="result"></div>
-        <input type="text" id='inputText' class='input' placeholder='texte'>
+        <input type="text" id='inputText' placeholder='texte' class='input'>
         <input type="file" accept=".png" id='inputFile' class='input'>
         <div id="gapSpaceDiv">
             <div>
                 <label for="inputSpace">Space</label>
-                <input type="number" min='0' max='10' value='3' id='inputSpace' name='inputSpace'>
+                <input type="number" min='0' max='10' value='3' id='inputSpace' name='inputSpace' class='input'>
             </div>
             <div>
                 <label for="inputGap">Gap</label>
-                <input type="number" min='0' max='10' value='0' id='inputGap' name='inputGap'>
+                <input type="number" min='0' max='10' value='0' id='inputGap' name='inputGap' class='input'>
             </div>
         </div>
     </div>
