@@ -37,23 +37,6 @@ body {
             border: .15svw var(--accent1light) solid;
             border-radius: 1svw;
         }
-        #inputFontDiv {
-
-            #Send {
-                height: 5svw;
-                width: 10svw;
-                font-size: 3svw;
-                background-color: var(--accent1light);
-            }
-        }
-        #inputTextDiv {
-            #display {
-                height: 5svw;
-                width: 15svw;
-                font-size: 3svw;
-                background-color: var(--accent1light);
-            }
-        }
 
         #result {
             width: 80%;
@@ -65,10 +48,21 @@ body {
             align-items: center;
 
             img {
+                max-width: 80%;
                 width: 80%;
                 max-height: 80%;
+                height: auto;
                 image-rendering: crisp-edges;
                 image-rendering: pixelated;
+            }
+        }
+        #gapSpaceDiv{
+            display: flex;
+            
+            div{
+                input{
+                    width: 4svw;
+                }
             }
         }
     }
