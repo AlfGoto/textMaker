@@ -75,6 +75,9 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+            border: var(--accent1light) 0svw solid;
+            transition: border-width .1s ease-in-out;
+            overflow: hidden;
 
             img {
                 max-width: 80%;
@@ -85,10 +88,14 @@ body {
                 height: auto;
                 image-rendering: crisp-edges;
                 image-rendering: pixelated;
+                
+                &.anim{
+                    animation: imgAppear .3s linear;
+                }
             }
         }
         #result.img:hover{
-            border: var(--accent1light) 1svw solid;
+            border-width: 1svw;
         }
         #gapSpaceDiv {
             display: flex;
@@ -160,4 +167,9 @@ body {
         margin: 1svw 0svw;
         text-align: center;
     }
+}
+
+@keyframes imgAppear{
+    from{min-width: 0%; transform: translateY(10svw)}
+    to{min-width: 60%;transform: translateY(0svw)}
 }

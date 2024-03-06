@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imgContainer.classList.add('img')
             imgContainer.innerHTML = ''
             let img = document.createElement('img')
+            img.classList.add('anim')
             imgContainer.appendChild(img)
             img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
             let a = document.createElement("a")
