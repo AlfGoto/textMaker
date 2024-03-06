@@ -3,10 +3,10 @@
 
 session_start();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     move_uploaded_file($_FILES['file']['tmp_name'], './font/' . $_FILES['file']['name']);
 
-    $url = $_SERVER['SERVER_NAME'] . "?f=" . str_replace('.png', '',$_FILES['file']['name']);
+    $url = $_SERVER['SERVER_NAME'] . "?f=" . str_replace('.png', '', $_FILES['file']['name']);
 }
 
 ?>
@@ -30,10 +30,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </form>
         <?php
         if (isset($url)) {
-            echo "<div id='link' class='input'>$url</div>";
+            echo "<div id='link' class='input' onclick='navigator.clipboard.writeText(`$url`)'>$url</div>";
         }
         ?>
-        
+
     </div>
 </body>
 
