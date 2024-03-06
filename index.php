@@ -11,13 +11,16 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yassou title maker</title>
+    <link rel="icon" href="img/icone.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id='workDiv'>
-        <div id="result"></div>
-        <input type="text" id='inputText' placeholder='texte' class='input'>
+        <div id="result">
+            <img src="img/logoyassou.png" alt="le super logo de Yassou">
+        </div>
+        <input type="text" id='inputText' placeholder='text' class='input'>
         <input type="file" accept=".png" id='inputFile' class='input'>
         <div id="gapSpaceDiv">
             <div>

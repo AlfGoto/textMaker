@@ -33,11 +33,7 @@ $alphabetString = '';
 foreach ($list as $value) {
     $temp = '';
     foreach ($value as $i) {
-        if ($i['red'] == 0 && $i['blue'] == 0 && $i['green'] == 0 && $i['alpha'] == 127) {
-            $temp .= 't$';
-        } elseif ($i['red'] == 255 && $i['blue'] == 255 && $i['green'] == 255 && $i['alpha'] == 127) {
-            $temp .= 't$';
-        } elseif ($i['alpha'] == 127) {
+        if ($i['alpha'] == 127) {
             $temp .= 't$';
         } else {
             $temp .= "r" . $i['red'] . "g" . $i['green'] . 'b' . $i['blue'] . 'a' . $i['alpha'] . "$";

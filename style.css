@@ -14,7 +14,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Courier, monospace, sans-serif;
+    font-family: Trebuchet MS;
 }
 
 body {
@@ -82,7 +82,9 @@ body {
 
             img {
                 max-width: 80%;
-                width: 80%;
+                min-width: 60%;
+                height: auto;
+                /* width: 80%; */
                 max-height: 80%;
                 height: auto;
                 image-rendering: crisp-edges;

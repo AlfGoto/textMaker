@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         form_data.append('file', file_data)
 
         if (inputFile.value.length == 0) { return }
-        console.log('Sending...', form_data)
 
         $.ajax({
             method: 'POST',
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
                 var a = document.createElement("a")
                 a.href = "data:image/png;base64," + JSON.parse(e)
-                a.download = inputText.value.replace(' ', '_') + ".png";
+                a.download = inputText.value + ".png";
                 img.addEventListener('click', ()=>{
                     a.click();
                 })
