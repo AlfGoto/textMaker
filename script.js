@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    if(window.location.search != ''){
+        console.log(window.location.search.split('=')[1])
+    }
+
     let inputFile = document.getElementById('inputFile')
 
     inputFile.addEventListener('change', () => {
@@ -43,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
             let imgContainer = document.getElementById('result')
             imgContainer.classList.add('img')
-            let img = document.createElement('img')
             imgContainer.innerHTML = ''
+            let img = document.createElement('img')
             imgContainer.appendChild(img)
             img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
             let a = document.createElement("a")
@@ -55,5 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
-
 })

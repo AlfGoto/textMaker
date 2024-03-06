@@ -76,10 +76,6 @@ body {
             justify-content: center;
             align-items: center;
 
-            &:hover{
-                border: var(--accent1light) 1svw solid;
-            }
-
             img {
                 max-width: 80%;
                 min-width: 60%;
@@ -90,6 +86,9 @@ body {
                 image-rendering: crisp-edges;
                 image-rendering: pixelated;
             }
+        }
+        #result.img:hover{
+            border: var(--accent1light) 1svw solid;
         }
         #gapSpaceDiv {
             display: flex;
@@ -124,5 +123,40 @@ body {
                 }
             }
         }
+    }
+}
+
+#workDiv.upload{
+    padding: 2svw;
+    height: 14svw;
+
+    form{
+        display: flex;
+
+        #inputFile.input{
+            width: 100%;
+            margin: 1svw 0svw;
+        }
+
+        input[type='submit']{
+            height: 3svw;
+            font-size: 1.5svw;
+            padding: .5svw;
+            margin: 1svw 0svw;
+            margin-left: 1svw;
+
+            &:hover{
+                background-color: var(--accent1light);
+                color: var(--white);
+            }
+        }
+    }
+
+    #link{
+        background-color: var(--accent1light);
+        height: 3svw;
+        width: 100%;
+        margin: 1svw 0svw;
+        text-align: center;
     }
 }
