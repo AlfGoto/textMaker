@@ -18,40 +18,42 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
-    let inputText = document.getElementById('inputText'), inputGap = document.getElementById('inputGap'), inputSpace = document.getElementById('inputSpace')
-    let baseValueInputText = inputText.value, baseValueInputGap = inputGap.value, baseValueInputSpace = inputSpace.value
+    let inputText = document.getElementById('inputText') 
+    let inputGap = document.getElementById('inputGap')
+    let inputSpace = document.getElementById('inputSpace')
 
-    setInterval(() => {
-        if ((baseValueInputText != inputText.value ||  baseValueInputGap != inputGap.value || baseValueInputSpace != inputSpace.value) && inputText.value.length > 0) {
-            baseValueInputText = inputText.value, baseValueInputGap = inputGap.value, baseValueInputSpace = inputSpace.value
+    inputText.addEventListener('change', sendToDisplay)
+    inputGap.addEventListener('change', sendToDisplay)
+    inputSpace.addEventListener('change', sendToDisplay)
 
-            if (inputGap.value == 0) { var gap = -1 } else { var gap = inputGap.value }
 
-            $.ajax({
-                method: 'POST',
-                url: 'ajaxDisplayer.php',
-                data: {
-                    text: inputText.value.toLowerCase(),
-                    gap: gap,
-                    space: inputSpace.value
-                }
-            }).done((e) => {
-                if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
-                let imgContainer = document.getElementById('result')
-                imgContainer.classList.add('img')
-                let img = document.createElement('img')
-                imgContainer.innerHTML = ''
-                imgContainer.appendChild(img)
-                img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
-                var a = document.createElement("a")
-                a.href = "data:image/png;base64," + JSON.parse(e)
-                a.download = inputText.value + ".png";
-                img.addEventListener('click', ()=>{
-                    a.click();
-                })
+    function sendToDisplay() {
+        if (inputText.value.length == 0) { return }
+        if (inputGap.value == 0) { var gap = -1 } else { var gap = inputGap.value }
+
+        $.ajax({
+            method: 'POST',
+            url: 'ajaxDisplayer.php',
+            data: {
+                text: inputText.value.toLowerCase(),
+                gap: gap,
+                space: inputSpace.value
+            }
+        }).done((e) => {
+            if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
+            let imgContainer = document.getElementById('result')
+            imgContainer.classList.add('img')
+            let img = document.createElement('img')
+            imgContainer.innerHTML = ''
+            imgContainer.appendChild(img)
+            img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
+            let a = document.createElement("a")
+            a.href = "data:image/png;base64," + JSON.parse(e)
+            a.download = inputText.value + ".png";
+            img.addEventListener('click', () => {
+                a.click();
             })
-        }
-    }, 2000)
-
+        })
+    }
 
 })

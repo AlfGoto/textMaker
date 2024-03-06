@@ -18,7 +18,7 @@ session_start();
 <body>
     <div id='workDiv'>
         <div id="result">
-            <img src="img/logoyassou.png" alt="le super logo de Yassou">
+            <img src="img/okokok.png" alt="le super logo de Yassou">
         </div>
         <input type="text" id='inputText' placeholder='text' class='input'>
         <input type="file" accept=".png" id='inputFile' class='input'>
