@@ -1,27 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     if(window.location.search != ''){
-        console.log(window.location.search.split('=')[1])
-    }
-
-    let inputFile = document.getElementById('inputFile')
-
-    inputFile.addEventListener('change', () => {
-        var file_data = $(inputFile).prop('files')[0], form_data = new FormData()
-        form_data.append('file', file_data)
-
-        if (inputFile.value.length == 0) { return }
-
         $.ajax({
             method: 'POST',
-            dataType: 'text',
-            cache: false,
             url: 'ajaxFontMaker.php',
-            data: form_data,
-            processData: false,
-            contentType: false
+            data: {
+                font: window.location.search.split('=')[1] + '.png'
+            }
         })
-    })
+
+        window.history.pushState({}, document.title, "/");
+    }
+
+
 
     let inputText = document.getElementById('inputText') 
     let inputGap = document.getElementById('inputGap')

@@ -20,7 +20,6 @@ session_start();
             <img src="img/okokok.png" alt="le super logo de Yassou">
         </div>
         <input type="text" id='inputText' placeholder='text' class='input'>
-        <input type="file" accept=".png" id='inputFile' class='input'>
         <div id="gapSpaceDiv">
             <div>
                 <label for="inputSpace">Space</label>

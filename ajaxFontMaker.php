@@ -7,11 +7,8 @@ if (0 < $_FILES['file']['error']) {
     exit;
 }
 
-move_uploaded_file($_FILES['file']['tmp_name'], './tmp/' . $_FILES['file']['name']);
 
-
-$image = imagecreatefrompng('./tmp/' . $_FILES['file']['name']);
-// $image = imagecreatefrompng('./tmp/wywy.png');
+$image = imagecreatefrompng('./font/' . $_POST['font']);
 $height = imagesy($image);
 $_SESSION['height'] = $height;
 $width = imagesx($image);

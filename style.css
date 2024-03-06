@@ -154,6 +154,7 @@ body {
 
     #link{
         background-color: var(--accent1light);
+        font-size: 2svw;
         height: 3svw;
         width: 100%;
         margin: 1svw 0svw;
