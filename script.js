@@ -1,20 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    if(window.location.search != ''){
-        $.ajax({
-            method: 'POST',
-            url: 'ajaxFontMaker.php',
-            data: {
-                font: window.location.search.split('=')[1] + '.png'
-            }
-        })
+    $.ajax({
+        method: 'POST',
+        url: 'ajaxFontMaker.php',
+        data: {
+            font: window.location.pathname.replace('/', '') + '.png'
+        }
+    })
 
-        window.history.pushState({}, document.title, "/");
-    }
+    window.history.pushState({}, document.title, "/");
 
 
-
-    let inputText = document.getElementById('inputText') 
+    let inputText = document.getElementById('inputText')
     let inputGap = document.getElementById('inputGap')
     let inputSpace = document.getElementById('inputSpace')
 

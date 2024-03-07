@@ -6,7 +6,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     move_uploaded_file($_FILES['file']['tmp_name'], './font/' . $_FILES['file']['name']);
 
-    $url = $_SERVER['SERVER_NAME'] . "?f=" . str_replace('.png', '', $_FILES['file']['name']);
+    $url = $_SERVER['SERVER_NAME'] . "/" . str_replace('.png', '', $_FILES['file']['name']);
 }
 
 ?>
