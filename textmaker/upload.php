@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     array_pop($arr);
     $path = implode('/',$arr);
 
-    $url = $path . "/" . str_replace('.png', '', $_FILES['file']['name']);
+    $url = $path . "/?f=" . str_replace('.png', '', $_FILES['file']['name']);
     //$url = $_SERVER['SERVER_NAME'] . "/" . str_replace('.png', '', $_FILES['file']['name']);
 }
 
