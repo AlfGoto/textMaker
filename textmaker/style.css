@@ -22,8 +22,20 @@ body {
     height: 100svh;
     width: 100svw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    #imgLogo{
+        position: absolute;
+        width: 7svw;
+        top: 0px;
+        left: 0px;
+        margin: 2svw;
+        padding: 1svw;
+        border-radius: 1svw;
+        background-color: var(--accent2light);
+    }
 
     #workDiv {
         height: 40svw;
@@ -88,13 +100,13 @@ body {
                 height: auto;
                 image-rendering: crisp-edges;
                 image-rendering: pixelated;
-                
-                &.anim{
+
+                &.anim {
                     animation: imgAppear .3s linear;
                 }
             }
         }
-        #result.img:hover{
+        #result.img:hover {
             border-width: 1svw;
         }
         #gapSpaceDiv {
@@ -133,33 +145,33 @@ body {
     }
 }
 
-#workDiv.upload{
+#workDiv.upload {
     padding: 2svw;
     height: 14svw;
 
-    form{
+    form {
         display: flex;
 
-        #inputFile.input{
+        #inputFile.input {
             width: 100%;
             margin: 1svw 0svw;
         }
 
-        input[type='submit']{
+        input[type='submit'] {
             height: 3svw;
             font-size: 1.5svw;
             padding: .5svw;
             margin: 1svw 0svw;
             margin-left: 1svw;
 
-            &:hover{
+            &:hover {
                 background-color: var(--accent1light);
                 color: var(--white);
             }
         }
     }
 
-    #link{
+    #link {
         background-color: var(--accent1light);
         font-size: 1.5svw;
         height: 3svw;
@@ -169,7 +181,41 @@ body {
     }
 }
 
-@keyframes imgAppear{
-    from{min-width: 0%; transform: translateY(10svw)}
-    to{min-width: 60%;transform: translateY(0svw)}
+@keyframes imgAppear {
+    from {
+        min-width: 0%;
+        transform: translateY(10svw)
+    }
+    to {
+        min-width: 60%;
+        transform: translateY(0svw)
+    }
+}
+
+
+#historique {
+    margin: 5svw;
+    width: 40svw;
+    background-color: var(--accent2);
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+
+    div{
+        margin: 1svw;
+        background-color: var(--accent1light);
+        display: flex;
+        position: relative;
+
+        button{
+            position: absolute;
+            right: 0svw;
+            height: 1.5svw;
+            font-size: 1svw;
+        }
+
+        p{
+            font-size: 1.5svw;
+        }
+    }
 }

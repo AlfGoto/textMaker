@@ -46,4 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+
+
+    inputText.value = 'Exemple'
+    sendToDisplay()
+    setTimeout(()=>{
+        inputText.value = ''
+    }, 100)
 })

@@ -15,6 +15,7 @@ session_start();
 </head>
 
 <body>
+    <img src="img/okokok.png" alt="" id='imgLogo'>
     <div id='workDiv'>
         <div id="result">
             <img src="img/okokok.png" alt="le super logo de Yassou">
