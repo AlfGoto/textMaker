@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     $.ajax({
         method: 'POST',
         url: 'ajaxFontMaker.php',
         data: {
-            font: window.location.pathname.split('?f=')[window.location.pathname.split('?f=').length-1] + '.png'
+            font: window.location.href.split('?f=')[window.location.href.split('?f=').length-1] + '.png'
         }
     })
 
