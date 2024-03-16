@@ -31,9 +31,13 @@ if($gap == -1){
     $currentX++;
     $totalWidth++;
 }
+
 $result = imagecreatetruecolor($totalWidth, $_SESSION['height']);
-$black = imagecolorallocate($result, 0, 0, 0);
-imagecolortransparent($result, $black);
+$transparent = imagecolorallocatealpha($result, 0, 0, 0, 127);
+imagealphablending($result, false);
+imagefilledrectangle($result, 0, 0, $totalWidth, $_SESSION['height'], $transparent);
+imagealphablending($result, true);
+imagesavealpha($result, true);
 
 foreach ($txtARR as $value) {
     if ($value == ' ') {

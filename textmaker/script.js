@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let img = document.createElement('img')
             img.classList.add('anim')
             imgContainer.appendChild(img)
-            img.src = 'data:image/jpeg;base64,' + JSON.parse(e)
+            img.src = 'data:image/png;base64,' + JSON.parse(e)
             let a = document.createElement("a")
             a.href = "data:image/png;base64," + JSON.parse(e)
             a.download = inputText.value + ".png";
