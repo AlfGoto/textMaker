@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION['a'])) {
+if (!isset($_SESSION[$_POST['font']]['a'])) {
     echo json_encode('font not defined');
     exit();
 }
@@ -20,7 +20,7 @@ foreach ($txtARR as $value) {
     if ($value == ' ') {
         $tempGap = $space;
     } else {
-        file_put_contents('./tmp/image.png', base64_decode($_SESSION[$value]));
+        file_put_contents('./tmp/image.png', base64_decode($_SESSION[$_POST['font']][$value]));
         $totalWidth += getimagesize('./tmp/image.png')[0] + $gap + $tempGap;
         $tempGap = 0;
     }
@@ -32,10 +32,10 @@ if($gap == -1){
     $totalWidth++;
 }
 
-$result = imagecreatetruecolor($totalWidth, $_SESSION['height']);
+$result = imagecreatetruecolor($totalWidth, $_SESSION[$_POST['font']]['height']);
 $transparent = imagecolorallocatealpha($result, 0, 0, 0, 127);
 imagealphablending($result, false);
-imagefilledrectangle($result, 0, 0, $totalWidth, $_SESSION['height'], $transparent);
+imagefilledrectangle($result, 0, 0, $totalWidth, $_SESSION[$_POST['font']]['height'], $transparent);
 imagealphablending($result, true);
 imagesavealpha($result, true);
 
@@ -43,9 +43,9 @@ foreach ($txtARR as $value) {
     if ($value == ' ') {
         $tempGap = $space;
     } else {
-        file_put_contents('./tmp/image.png', base64_decode($_SESSION[$value]));
+        file_put_contents('./tmp/image.png', base64_decode($_SESSION[$_POST['font']][$value]));
         $tmp = imagecreatefrompng('./tmp/image.png');
-        imagecopy($result, $tmp, $currentX + $gap + $tempGap, 0, 0, 0, getimagesize('./tmp/image.png')[0], $_SESSION['height']);
+        imagecopy($result, $tmp, $currentX + $gap + $tempGap, 0, 0, 0, getimagesize('./tmp/image.png')[0], $_SESSION[$_POST['font']]['height']);
         $currentX += getimagesize('./tmp/image.png')[0] + $gap + $tempGap;
         $tempGap = 0;
     }

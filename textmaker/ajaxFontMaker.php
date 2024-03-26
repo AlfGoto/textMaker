@@ -10,7 +10,7 @@ if (0 < $_FILES['file']['error']) {
 
 $image = imagecreatefrompng('./font/' . $_POST['font']);
 $height = imagesy($image);
-$_SESSION['height'] = $height;
+$_SESSION[$_POST['font']]['height'] = $height;
 $width = imagesx($image);
 
 $list = [];
@@ -95,7 +95,7 @@ foreach ($alphabetArr as $value) {
     }
     imagepng($gd, "tmp/$letter.png");
     $imagedata = file_get_contents("tmp/$letter.png");
-    $_SESSION[$letter] = base64_encode($imagedata);
+    $_SESSION[$_POST['font']][$letter] = base64_encode($imagedata);
     unlink("tmp/$letter.png");
     $letter++;
 }

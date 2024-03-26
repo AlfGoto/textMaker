@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 text: inputText.value.toLowerCase(),
                 gap: gap,
-                space: inputSpace.value
+                space: inputSpace.value,
+                font: window.location.href.split('?f=')[window.location.href.split('?f=').length-1] + '.png'
             }
         }).done((e) => {
             if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
