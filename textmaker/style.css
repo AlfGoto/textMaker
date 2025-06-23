@@ -12,8 +12,6 @@
 
 * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
     font-family: Trebuchet MS;
 }
 
@@ -72,11 +70,6 @@ body {
                 margin: 0.4svw;
                 border-radius: .2svw;
             }
-        }
-
-        .input {
-            border: .15svw var(--accent1light) solid;
-            border-radius: .5svw;
         }
 
         #result {
@@ -164,10 +157,6 @@ body {
             margin: 1svw 0svw;
             margin-left: 1svw;
 
-            &:hover {
-                background-color: var(--accent1light);
-                color: var(--white);
-            }
         }
     }
 
@@ -206,13 +195,6 @@ body {
         background-color: var(--accent1light);
         display: flex;
         position: relative;
-
-        button{
-            position: absolute;
-            right: 0svw;
-            height: 1.5svw;
-            font-size: 1svw;
-        }
 
         p{
             font-size: 1.5svw;
