@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         url: 'ajaxFontMaker.php',
         data: {
-            font: window.location.href.split('?f=')[window.location.href.split('?f=').length-1] + '.png'
+            font: window.location.href.split('?f=')[window.location.href.split('?f=').length - 1] + '.png'
         }
     })
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 text: inputText.value.toLowerCase(),
                 gap: gap,
                 space: inputSpace.value,
-                font: window.location.href.split('?f=')[window.location.href.split('?f=').length-1] + '.png'
+                font: window.location.href.split('?f=')[window.location.href.split('?f=').length - 1] + '.png'
             }
         }).done((e) => {
             if (JSON.parse(e) == 'font not defined') { console.log('Font not defined'); return }
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inputText.value = 'Exemple'
     sendToDisplay()
-    setTimeout(()=>{
+    setTimeout(() => {
         inputText.value = ''
     }, 100)
 })
